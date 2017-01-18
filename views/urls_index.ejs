@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ./partials/_html_head %>
+<body>
+<% include ./partials/_header %>
+  <div id="list">
+    <a href="/urls/new">Add More Links </a>
+    <ol>
+      <% for (links in urls) { %>
+        <li><b>Old Link: </b><%= urls[links] %></li>
+        <b>New Link: </b><a href="<%=urls[links]%>"><%=links%> </a></br>
+        <a href="/urls/<%=links%>/"> <button class="buttons">Edit</button></a>
+        <form method="POST" action="/urls/<%=links%>/delete">
+        <input type="submit" value="Delete" class="buttons"></input>
+        </form>
+      <% } %>
+      </br>
+
+    </ol>
+  </div>
+</body>
+</html>

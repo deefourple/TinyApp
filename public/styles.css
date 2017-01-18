@@ -1,0 +1,73 @@
+.buttons {
+  background-color: #aaa;
+  border-radius: 25%;
+  display: inline-block;
+  font-size: 1.1em;
+  color: red;
+}
+
+#header {
+  text-align: center;
+  font-size: 3em;
+}
+
+#short {
+  font-size: 2.2em;
+  text-align: center;
+}
+
+.shortLink {
+  color: #ba7443;
+  font-size: 2em;
+  text-decoration: underline;
+  text-decoration: bold;
+
+}
+
+.shortLink:hover {
+  font-size: 5em  ;
+  text-decoration: none;
+}
+
+#update {
+  font-size: 2em;
+}
+
+body {
+  color: #c9b12a;
+  background-color: #66603e;
+  text-align: center;
+}
+
+#list {
+  font-size: 2em;
+  text-decoration: none;
+  text-align: center;
+  background-color: #96938d;
+  display: inline-block;
+  color: black;
+  border-radius: 10%;
+  padding-right: 35px;
+  padding-left: 35px;
+  margin-top: 5%;
+}
+
+#longURL {
+  line-height: 2.5em;
+}
+
+#newURL {
+  font-size: 1.5em;
+}
+
+.formVertical {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+#text {
+  width: 253px;
+  line-height: 2em;
+}
