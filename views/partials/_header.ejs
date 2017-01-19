@@ -2,16 +2,16 @@
   <div id="header">
     <link href="/styles.css" rel="stylesheet" type="text/css">
     Dave's Link Shortener
+  </div>
     <% if(username) { %>
       <form action="/logout" method="POST">
-      <p> Username: <%=  username %> </p>
-      <input type="submit" value="Log Out">
+      <p id="user"> Username: <%=  username %> </p>
+      <input class="buttons" id="loggedIn" type="submit" value="Sign Out">
       </form>
     <% } else { %>
       <form action="/login" method="POST">
       <input type="text" name="username">
-      <input type="submit" value="Log In">
+      <input class="buttons" type="submit" value="Log In">
       </form>
     <%   } %>
-  </div>
 </header>

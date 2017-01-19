@@ -4,7 +4,6 @@
 <body>
 <% include ./partials/_header %>
   <div id="list">
-    <a href="/urls/new">Add More Links </a>
     <ol>
       <% for (links in urls) { %>
         <li><b>Old Link: </b><%= urls[links] %></li>
@@ -14,6 +13,7 @@
         <input type="submit" value="Delete" class="buttons"></input>
         </form>
       <% } %>
+      <a href="/urls/new">Add More Links </a>
       </br>
     </ol>
   </div>
