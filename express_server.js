@@ -13,11 +13,12 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 //attach 'request.body' to each post/put request
 const bodyParser = require("body-parser");
+const cookie = require('cookie-parser')
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
-//trying to insert a css file -
 app.use(express.static('public'))
+app.use(cookie())
 
 let urlDatabase = {
   "b2xVn2": "http://lighthouselabs.ca",
@@ -29,28 +30,30 @@ app.get("/", function(request, response) {
 });
 
 app.get("/urls/new", (request, response) => {
-  response.render("urls_new");
+  let login = { username: request.cookies["username"] };
+  response.render("urls_new", login);
 });
 
 app.post("/urls", (request, response) => {
   let generatedCode = generateRandomString();
     if (request.body.longURL.slice(0, 7) === "http://"){
-    console.log(urlDatabase[generatedCode] = request.body.longURL);
-
-  } else {
-    urlDatabase[generatedCode] = "http://" + request.body.longURL;
-  }
-    response.redirect("/urls/" + generatedCode);
+      console.log(urlDatabase[generatedCode] = request.body.longURL);
+    } else {
+      urlDatabase[generatedCode] = "http://" + request.body.longURL;
+    }
+  response.redirect("/urls/" + generatedCode);
 });
 
 app.get("/urls", function(request, response) {
-  let locals = { urls: urlDatabase};
+  let locals = { urls: urlDatabase,
+                 username: request.cookies["username"]};
   response.render("urls_index", locals);
 });
 
 app.get("/urls/:id", function(request, response) {
   let locals = { shortURL: request.params.id,
-                 longUrls: urlDatabase };
+                 longUrls: urlDatabase,
+                 username: request.cookies["username"] };
   response.render("urls_show", locals);
 });
 
@@ -73,6 +76,17 @@ app.post("/:id/update", function(request,response){
   }
   response.redirect('/urls')
 })
+
+app.post("/login", function(request, response){
+// if (){} else {}
+response.cookie("username", request.body.username)
+response.redirect('/urls')
+});
+
+app.post("/logout", function(request, response){
+  response.clearCookie("username")
+  response.redirect('/urls/')
+});
 
 app.get("/urls.json", function(request, response) {
   response.json(urlDatabase);
