@@ -29,7 +29,6 @@ let urlDatabase = {
 };
 
 
-
 app.get("/", function(request, response) {
   response.end("Hello, from Dave");
 });
@@ -97,14 +96,36 @@ app.get('/register', function(request, response){
   response.render('urls_register', login)
 });
 
-let usernames = [
-  { },
-];
-app.post("/register", function(request, response){
-  usernames.email = request.body.email;
-  usernames.password = request.body.password;
-  console.log(usernames);
-  response.redirect("/urls/")
+let users = {
+
+};
+
+//move and test empty string
+app.post('/register', function(request, response){
+  // if someone tries to register with an existing user's email,
+  // send back a response with the 400 status code
+  for (var rand in users) {
+    //check already stored rand["email"] in users for a match
+    if (users[rand].email === request.body.email) {
+      response.status(400);
+      response.send("Sorry, the username you have selected already exists", response.statusCode);
+    }
+  }
+  // if the email or password are empty, send back a response with the 400 status code
+  if (request.body.email === "" || request.body.password === "") {
+    response.status(400)
+    response.send("Sorry, you have not input enough information", response.statusCode);
+  } else {
+    const random = generateRandomString();
+    users[random] = {
+      id: random,
+      email: request.body.email,
+      password: request.body.password
+    }
+    response.cookie("email", request.body.email)
+    response.redirect("/")
+    // console.log(users);
+  }
 });
 
 app.get("/urls.json", function(request, response) {

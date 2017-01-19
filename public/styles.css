@@ -27,6 +27,22 @@
   font-size: 1.25em;
   color: yellow;
 }
+
+#register {
+  color: white;
+  text-decoration: none;
+  font-size: 1.5em;
+}
+
+#register:hover {
+  color: blue;
+  font-size: 1.65em;
+}
+
+#logIn {
+  height: 25px;
+  width: 190px;
+}
 /*#hidden {
   display: none;
 }
