@@ -4,14 +4,14 @@
     Dave's Link Shortener
   </div>
     <% if(username) { %>
-      <form action="/logout" method="POST">
-      <p id="user"> Username: <%=  username %> </p>
-      <input class="buttons" id="loggedIn" type="submit" value="Sign Out">
-      </form>
+        <form action="/logout" method="POST">
+        <p id="user"> Username: <%=  username %> </p>
+        <input class="buttons" id="loggedIn" type="submit" value="Sign Out">
+        </form>
     <% } else { %>
-      <form action="/login" method="POST">
-      <input type="text" name="username">
-      <input class="buttons" type="submit" value="Log In">
-      </form>
+        <form action="/login" method="POST">
+        <input type="text" name="username">
+        <input class="buttons" type="submit" value="Log In">
+        </form>
     <%   } %>
 </header>

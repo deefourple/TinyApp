@@ -1,3 +1,4 @@
+//create an array of indexes from each random number and store it everytime with a different variable.
 function generateRandomString() {
 let result = "";
 let lengthOfShortUrl = 6;
@@ -14,6 +15,8 @@ const PORT = process.env.PORT || 8080;
 //attach 'request.body' to each post/put request
 const bodyParser = require("body-parser");
 const cookie = require('cookie-parser')
+//require morgan
+//require bcrypt
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -25,16 +28,18 @@ let urlDatabase = {
   "9sm5xK": "http://google.com"
 };
 
+
+
 app.get("/", function(request, response) {
   response.end("Hello, from Dave");
 });
 
-app.get("/urls/new", (request, response) => {
+app.get("/urls/new", function(request, response) {
   let login = { username: request.cookies["username"] };
   response.render("urls_new", login);
 });
 
-app.post("/urls", (request, response) => {
+app.post("/urls", function(request, response) {
   let generatedCode = generateRandomString();
     if (request.body.longURL.slice(0, 7) === "http://"){
       console.log(urlDatabase[generatedCode] = request.body.longURL);
@@ -78,14 +83,28 @@ app.post("/:id/update", function(request,response){
 })
 
 app.post("/login", function(request, response){
-// if (){} else {}
-response.cookie("username", request.body.username)
-response.redirect('/urls')
+  response.cookie("username", request.body.username)
+  response.redirect('/urls')
 });
 
 app.post("/logout", function(request, response){
   response.clearCookie("username")
   response.redirect('/urls/')
+});
+
+app.get('/register', function(request, response){
+  let login = { username: request.cookies["username"] };
+  response.render('urls_register', login)
+});
+
+let usernames = [
+  { },
+];
+app.post("/register", function(request, response){
+  usernames.email = request.body.email;
+  usernames.password = request.body.password;
+  console.log(usernames);
+  response.redirect("/urls/")
 });
 
 app.get("/urls.json", function(request, response) {

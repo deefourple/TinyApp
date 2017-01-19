@@ -2,14 +2,14 @@
 <html lang="en">
   <% include ./partials/_html_head %>
   <body>
-    <% include partials/_header %>
-    <p id="hidden"> Use the url shortener below to share nicer looking URLs. Sign up today to save your links! </p>
-   <div class="formVertical">
-    <form action="/urls" method="POST" style="margin:150px;">
-      <label id="newURL" for="longURL">Enter a new url:</label>
-      <input id="longURL" type="text" name="longURL" placeholder="http://" style="width: 300px" >
-      <input class="buttons" type="submit" value="Submit">
-    </form>
-  </div>
+      <% include partials/_header %>
+     <p id="hidden"> Use the url shortener below to share nicer looking URLs. Sign up today to save your links! </p>
+     <div class="formVertical">
+      <form action="/urls" method="POST" style="margin:150px;">
+        <label id="newURL" for="longURL">Enter a new url:</label>
+        <input id="longURL" type="text" name="longURL" placeholder="http://" style="width: 300px" >
+        <input class="buttons" type="submit" value="Submit">
+      </form>
+    </div>
   </body>
 </html>
