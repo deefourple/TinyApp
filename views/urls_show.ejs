@@ -5,7 +5,7 @@
 <body>
 <% include ./partials/_header %>
   <h1 id="short"> Your new short URL:</h1>
-    <a class="shortLink" href="<%=longUrls[shortURL]%>"> <%=shortURL%> </a>
+    <a class="shortLink" href="<%=longUrls[shortURL]%>"> http://localhost:8080/u/<%=shortURL%> </a>
   <h4> What your old link looked like: </h4>
     <a class="shortLink" href="<%=longUrls[shortURL]%>"> <%=longUrls[shortURL]%></a>
   <form method="POST" action="/<%=shortURL%>/update">

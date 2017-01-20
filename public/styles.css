@@ -22,6 +22,21 @@
   text-align: center;
   font-size: 3.25em;
   line-height: 2em;
+  text-decoration: none;
+}
+
+.footer {
+  font-size: 0.85em;
+  font-family: helvetica;
+  color: white;
+  text-decoration: none;
+  width: 100%;
+
+}
+
+#noLink {
+  text-decoration: none;
+  color: #ba7443 ;
 }
 
 #user {
@@ -75,6 +90,15 @@ not working...
   font-size: 2em;
 }
 
+.main-text {
+  color: white;
+  font-size: 1.2em;
+}
+
+.welcome {
+  font-size: 2.5em;
+}
+
 body {
   color: #c9b12a;
   background-color: #66603e;
@@ -93,6 +117,7 @@ body {
   padding-left: 35px;
   margin-top: 5%;
   margin-bottom: 5%;
+  width: 60%;
 }
 
 #longURL {
