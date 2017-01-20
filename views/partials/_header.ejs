@@ -3,16 +3,15 @@
     <link href="/styles.css" rel="stylesheet" type="text/css">
     Dave's Link Shortener
   </div>
-    <% if(username) { %>
-        <form action="/logout" method="POST">
-        <p id="user"> Logged in as: <%=  username %> </p>
-        <input class="buttons" id="loggedIn" type="submit" value="Sign Out">
-        </form>
+    <% if(info === undefined) { %>
+      <a id="register" href="/register"> If, you haven't registered yet, click here </a>
+      <p>If you are already a user, please login here </p>
+      <a href="/login"><button>Log In</button></a>
     <% } else { %>
-        <a id="register" href="/register"> If, you haven't registered yet, click here! </a>
-        <form action="/login" method="POST">
-        <input id="logIn" type="text" name="username" placeholder="Log in here!">
-        <input class="buttons" type="submit" value="Log In">
+        <form action="/logout" method="POST">
+        <p id="user"> Logged in as: <%=  info.email %> </p>
+        <input class="buttons" id="loggedIn" type="submit" value="Sign Out">
         </form>
     <%   } %>
 </header>
+

@@ -8,6 +8,7 @@
   padding: 10px;
   -webkit-transition-duration: 1.0s;
   transition-duration: 1.0s;
+  text-align: center;
 }
 
 .buttons:hover {
@@ -39,7 +40,7 @@
   font-size: 1.65em;
 }
 
-#logIn {
+.logIn {
   height: 25px;
   width: 190px;
 }
