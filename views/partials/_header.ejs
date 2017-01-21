@@ -1,12 +1,12 @@
 <header>
   <div id="header">
     <link href="/styles.css" rel="stylesheet" type="text/css">
-    <a id="noLink" href="/">Dave's Link Shortener</a>
+    Dave's Link Shortener
   </div>
     <% if(info === undefined) { %>
       <a id="register" href="/register"> If, you haven't registered yet, click here </a>
       <p>If you are already a user, please login here </p>
-      <a href="/login"><button>Log In</button></a>
+      <a href="/login"><button class="buttons">Log In</button></a>
     <% } else { %>
         <form action="/logout" method="POST">
         <p id="user"> Logged in as: <%=  info.email %> </p>
