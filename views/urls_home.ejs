@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!-- Home -->
+<html lang="en">
+<link href="/styles.css" rel="stylesheet" type="text/css">
+  <body>
+    <p class="welcome">Welcome To Dave's Link Shortener</p>
+    <p class="main-text">This page was created for those who need to break the habit of sending unnecessarily long links through Twitter, e-mails, and text messages
+    </p>
+    <% if (locals.info) {%>
+    <p> View your index here: <a href="/urls"> Your URLs </a> </p>
+    <%} else {%>
+    <a id="register" href="/register"> If, you haven't registered yet, click here </a>
+    <p>If you are already a user, please login here </p>
+    <a href="/login"><button class="buttons">Log In</button></a>
+    <%}%>
+    <a href="/urls/new" class="click-here">Click here to shorten links</a>
+  <% include ./partials/_footer %>
+  </body>
