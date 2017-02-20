@@ -23,7 +23,7 @@ function matchUser(email) {
 }
 
 let users = {
-
+//do not remove! database for entire system...
 };
 
 const express = require('express');
@@ -54,13 +54,12 @@ let pageVisits = 0;
 app.get("/", function(request, response) {
   pageVisits += 1;
   let login = { info: users[request.session.user_id],
-                pageVisits: pageVisits};
+                pageVisits: pageVisits };
   response.render('urls_home.ejs', login)
 });
 
 app.get('/register', function(request, response){
-  let login = { info: users[request.session.user_id]
-                };
+  let login = { info: users[request.session.user_id] };
   response.render('urls_register', login)
 });
 
@@ -74,7 +73,6 @@ app.post('/register', function(request, response){
       response.send("Sorry, the username you have selected already exists", response.statusCode);
     }
   }
-  // if the email or password are empty, send back a response with the 400 status code
   if (request.body.email === "" || request.body.password === "") {
     response.status(400)
     response.send("Sorry, you have not input enough information", response.statusCode);
@@ -89,13 +87,11 @@ app.post('/register', function(request, response){
     }
     request.session.user_id = random;
     response.redirect("/urls")
-    // console.log(users);
   }
 });
 
 app.get('/login', function(request, response) {
-    let login = {  info: users[request.session.user_id]
-                 };
+    let login = {  info: users[request.session.user_id] };
     response.render('urls_login', login)
 });
 
@@ -146,10 +142,9 @@ app.post("/urls", function(request, response) {
     response.send("Sorry, you cannot shorten URLs without being logged in")
   }
 });
+
 //because the cookie lives in the browser when you restart the server the cookie is still set
 //show that user is already logged in if cookie exists
-//on first page
-
 app.get("/urls/new", function(request, response) {
   let login = { username: request.session.username,
                 info: users[request.session.user_id]
@@ -189,7 +184,6 @@ app.post("/:id/update", function(request,response){
 })
 
 app.post("/logout", function(request, response){
-  // response.clearCookie("user_id")
   request.session = null;
   response.redirect('/');
 });
